@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Para ud preciosa <3 </title>
+
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#f8edf0;
+  --ink:#4b3340;
+  --muted:#846875;
+  --paper:#fffaf8;
+  --rose:#d98c9e;
+  --rose2:#efbdc9;
+  --green:#789a7b;
+  --shadow:0 18px 50px #54283a22;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Georgia,'Times New Roman',serif;
+}
+
+body{
+  background:var(--bg);
+}
+
+#app{
+  min-height:100svh;
+  width:100%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:light-dark(#f8edf0,#241b20);
+  position:relative;
+  color:var(--ink);
+}
+
+.scene{
+  width:min(92vw,520px);
+  height:min(92svh,760px);
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.envelope{
+  width:min(86vw,390px);
+  aspect-ratio:1.48;
+  position:relative;
+  cursor:pointer;
+  filter:drop-shadow(0 18px 28px #4b263520);
+  transition:transform .35s ease;
+}
+
+.envelope:hover{
+  transform:translateY(-4px);
+}
+
+.env-back{
+  position:absolute;
+  inset:0;
+  background:#e9aeba;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+}
+
+.paper{
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:7%;
+  height:84%;
+  background:var(--paper);
+  border-radius:7px;
+  transform:translateY(12%);
+  transition:
+    transform .8s cubic-bezier(.2,.8,.2,1),
+    z-index .1s;
+  z-index:2;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 8px 22px #54283a14;
+}
+
+.paper small{
+  color:var(--muted);
+  letter-spacing:2px;
+}
+
+.paper h2{
+  margin:10px 0 0;
+  font-size:clamp(22px,6vw,30px);
+  font-weight:normal;
+}
+
+.flap{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  clip-path:polygon(0 0,100% 0,50% 58%);
+  background:#efbdc9;
+  transform-origin:50% 0;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+  border-radius:10px 10px 0 0;
+}
+
+.front{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  clip-path:polygon(
+    0 0,
+    50% 55%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+  background:#e5a6b3;
+  border-radius:10px;
+}
+
+.seal{
+  position:absolute;
+  z-index:7;
+  left:50%;
+  top:56%;
+  transform:translate(-50%,-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#c9758b;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  box-shadow:0 4px 12px #54283a2b;
+  transition:opacity .4s;
+}
+
+.hint{
+  position:absolute;
+  top:calc(100% + 22px);
+  width:100%;
+  text-align:center;
+  color:#876a75;
+  font-family:system-ui,sans-serif;
+  font-size:13px;
+}
+
+.open .flap{
+  transform:rotateX(180deg);
+  z-index:1;
+}
+
+.open .paper{
+  transform:translateY(-36%);
+  z-index:6;
+}
+
+.open .seal{
+  opacity:0;
+  pointer-events:none;
+}
+
+.open .envelope{
+  cursor:default;
+}
+
+
+/* =========================
+   CARTA INTERIOR
+========================= */
+
+.message{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .7s ease .65s;
+  z-index:10;
+}
+
+.open .message{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.card{
+  width:min(88vw,430px);
+  min-height:430px;
+  padding:45px 24px 38px;
+  text-align:center;
+  background:var(--paper);
+  border:1px solid #dcaab722;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.card:before,
+.card:after{
+  content:'✿';
+  position:absolute;
+  color:#e6a2b1;
+  font-size:75px;
+  opacity:.24;
+}
+
+.card:before{
+  left:-17px;
+  top:-12px;
+}
+
+.card:after{
+  right:-15px;
+  bottom:-17px;
+  transform:rotate(20deg);
+}
+
+
+/* =========================
+   RAMO GRANDE
+========================= */
+
+.bouquet{
+  height:190px;
+  position:relative;
+  margin:0 auto 6px;
+  width:min(88vw,310px);
+}
+
+
+/* Tallos */
+
+.stem{
+  position:absolute;
+  width:3px;
+  background:var(--green);
+  height:165px;
+  bottom:0;
+  left:50%;
+  transform-origin:bottom;
+  border-radius:4px;
+}
+
+.s1{
+  transform:rotate(-28deg);
+}
+
+.s2{
+  transform:rotate(-14deg);
+}
+
+.s3{
+  transform:rotate(14deg);
+}
+
+.s4{
+  transform:rotate(28deg);
+  height:150px;
+}
+
+.s5{
+  transform:rotate(-5deg);
+  height:172px;
+}
+
+
+/* Hojas */
+
+.leaf{
+  position:absolute;
+  width:48px;
+  height:21px;
+  border-radius:100% 0 100% 0;
+  background:#82a884;
+  opacity:.95;
+}
+
+.l1{
+  left:38px;
+  bottom:53px;
+  transform:rotate(25deg);
+}
+
+.l2{
+  left:78px;
+  bottom:76px;
+  transform:rotate(202deg);
+}
+
+.l3{
+  right:43px;
+  bottom:65px;
+  transform:rotate(170deg);
+}
+
+.l4{
+  right:78px;
+  bottom:92px;
+  transform:rotate(24deg);
+}
+
+
+/* Flores */
+
+.flower{
+  position:absolute;
+  width:70px;
+  height:70px;
+  left:50%;
+  top:5px;
+  transform:translateX(-50%);
+}
+
+.flower i{
+  position:absolute;
+  width:33px;
+  height:45px;
+  border-radius:50% 50% 45% 45%;
+  background:#efb8c4;
+  left:18px;
+  top:0;
+  transform-origin:50% 100%;
+  box-shadow:0 0 0 1px #d995a622;
+}
+
+.flower i:nth-child(2){
+  transform:rotate(72deg);
+}
+
+.flower i:nth-child(3){
+  transform:rotate(144deg);
+}
+
+.flower i:nth-child(4){
+  transform:rotate(216deg);
+}
+
+.flower i:nth-child(5){
+  transform:rotate(288deg);
+}
+
+.flower b{
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#e5b766;
+  left:26px;
+  top:25px;
+  z-index:2;
+  box-shadow:0 0 0 3px #f7d88b55;
+}
+
+
+/* Posiciones de las 7 flores */
+
+.flower.f2{
+  left:24%;
+  top:39px;
+  transform:scale(.78);
+}
+
+.flower.f3{
+  left:76%;
+  top:43px;
+  transform:scale(.74);
+}
+
+.flower.f4{
+  left:39%;
+  top:66px;
+  transform:scale(.66);
+}
+
+.flower.f5{
+  left:62%;
+  top:68px;
+  transform:scale(.66);
+}
+
+.flower.f6{
+  left:12%;
+  top:76px;
+  transform:scale(.50);
+}
+
+.flower.f7{
+  left:88%;
+  top:78px;
+  transform:scale(.50);
+}
+
+
+/* Diferentes tonos */
+
+.flower.f2 i,
+.flower.f4 i,
+.flower.f6 i{
+  background:#f1c5cf;
+}
+
+.flower.f3 i,
+.flower.f5 i,
+.flower.f7 i{
+  background:#e7a5b6;
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.card h1{
+  font-size:clamp(25px,7vw,40px);
+  font-weight:normal;
+  margin:10px 0 9px;
+  color:#684353;
+}
+
+.card p{
+  font-family:system-ui,sans-serif;
+  color:#876a75;
+  font-size:14px;
+  margin:0;
+  letter-spacing:.2px;
+}
+
+.close{
+  margin-top:25px;
+  border:0;
+  background:transparent;
+  color:#a26778;
+  font-family:system-ui,sans-serif;
+  font-size:12px;
+  cursor:pointer;
+  padding:8px;
+}
+
+
+/* =========================
+   PÉTALOS
+========================= */
+
+.petal{
+  position:absolute;
+  top:-30px;
+  width:9px;
+  height:14px;
+  background:#e9aab9;
+  border-radius:100% 0 100% 0;
+  opacity:.6;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{
+    transform:
+      translate3d(var(--x),110vh,0)
+      rotate(380deg);
+  }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width:480px){
+
+  .scene{
+    height:88svh;
+  }
+
+  .card{
+    min-height:400px;
+    padding-top:38px;
+  }
+
+  .paper{
+    padding-top:20px;
+  }
+
+  .hint{
+    font-size:12px;
+  }
+
+  .bouquet{
+    transform:scale(.92);
+  }
+}
+
+
+/* Personas que prefieren menos animación */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="app">
+
+  <div class="scene" id="scene">
+
+    <!-- SOBRE -->
+
+    <div
+      class="envelope"
+      id="envelope"
+      aria-label="Abrir carta"
+      role="button"
+      tabindex="0"
+    >
+
+      <div class="env-back"></div>
+
+      <!-- AQUÍ CAMBIAS EL TEXTO PEQUEÑO -->
+
+      <div class="paper">
+        <small>PARA TI, AMOR DE MI VIDA</small>
+
+        <h2>Una pequeña sorpresa ♡</h2>
+      </div>
+
+      <div class="flap"></div>
+
+      <div class="front"></div>
+
+      <div class="seal">♡</div>
+
+      <div class="hint">
+        Toca la carta para abrirla
+      </div>
+
+    </div>
+
+
+    <!-- CARTA ABIERTA -->
+
+    <div class="message">
+
+      <div class="card">
+
+        <!-- RAMO DE FLORES -->
+
+        <div class="bouquet">
+
+          <div class="stem s1"></div>
+          <div class="stem s2"></div>
+          <div class="stem s3"></div>
+          <div class="stem s4"></div>
+          <div class="stem s5"></div>
+
+          <div class="leaf l1"></div>
+          <div class="leaf l2"></div>
+          <div class="leaf l3"></div>
+          <div class="leaf l4"></div>
+
+
+          <!-- FLOR 1 -->
+
+          <div class="flower f1">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 2 -->
+
+          <div class="flower f2">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 3 -->
+
+          <div class="flower f3">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 4 -->
+
+          <div class="flower f4">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 5 -->
+
+          <div class="flower f5">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 6 -->
+
+          <div class="flower f6">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+
+          <!-- FLOR 7 -->
+
+          <div class="flower f7">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <b></b>
+          </div>
+
+        </div>
+
+
+        <!-- AQUÍ CAMBIAS EL MENSAJE PRINCIPAL -->
+
+        <h1>
+          Que tenga un buen día amor de mi vida, muak ♡
+        </h1>
+
+
+        <!-- AQUÍ CAMBIAS EL MENSAJE SECUNDARIO -->
+
+        <p>
+          Espero que le pase lo mejor y le vaya muy bien en este dia.
+        </p>
+
+
+        <button class="close" id="close">
+          Cerrar carta
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const scene = document.getElementById('scene');
+
+const envelope = document.getElementById('envelope');
+
+const close = document.getElementById('close');
+
+
+function openCard(){
+
+  scene.classList.add('open');
+
+
+  if(!scene.dataset.petals){
+
+    scene.dataset.petals = '1';
+
+
+    for(let i=0;i<14;i++){
+
+      const p = document.createElement('span');
+
+      p.className = 'petal';
+
+      p.style.left = Math.random()*100 + '%';
+
+      p.style.setProperty(
+        '--x',
+        (Math.random()*140-70) + 'px'
+      );
+
+      p.style.animationDuration =
+        (5 + Math.random()*6) + 's';
+
+      p.style.animationDelay =
+        (-Math.random()*7) + 's';
+
+      scene.appendChild(p);
+
+    }
+
+  }
+
+}
+
+
+function closeCard(){
+
+  scene.classList.remove('open');
+
+}
+
+
+envelope.addEventListener(
+  'click',
+  openCard
+);
+
+
+envelope.addEventListener(
+  'keydown',
+  e => {
+
+    if(e.key === 'Enter' || e.key === ' '){
+
+      e.preventDefault();
+
+      openCard();
+
+    }
+
+  }
+);
+
+
+close.addEventListener(
+  'click',
+  closeCard
+);
+
+</script>
+
+</body>
+</html>
